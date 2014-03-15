@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <strong><link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"></strong>
+    <title>Info Retrieval App</title>   
+  </head>
+  <body>
+   
+    <header>
+      <div class="container">
+        <h1 class="logo">Boolean Query App</h1>
+      </div>
+    </header>
+     
+    <div class="container">
+	<div> <h1> <a href="/index">Click here to index documents</a> </h1></div>
+        <br>
+        <h3>{{content.info}}!</h3>
+        <hr>
+	<div>
+		<form action="" method="post" name="query">
+    		{{form.hidden_tag()}}
+    		<p>
+        	    <h1>Please enter the query:</h1>
+        		{{form.queryid(size=80)}}<br>
+    		</p>
+    		<p><input type="submit" value="Query"></p>
+		</form>
+	</div>
+	<ul>
+	<p > List of documents for this query: </p>	
+        {% for item in content.res %}
+        <li>{{item}} </li>
+        {% endfor %}
+	</ul>
+    </div>
+     
+  </body>
+</html>
